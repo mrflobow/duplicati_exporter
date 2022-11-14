@@ -8,9 +8,9 @@ from twisted.web.server import Site
 from twisted.web.resource import Resource
 from twisted.internet import reactor
 
-from prometheus_client import Gauge, MetricsHandler, Enum
+from prometheus_client import Gauge, MetricsHandler, Enum,Info
 
-
+backup_task_info = Info('backup_task_info', 'Name of the backup task', ['task'])
 
 backup_started = Gauge('backup_started', 'Time when the last backup started', ['task'])
 backup_duration = Gauge('backup_duration', 'Time the backup needed to complete', ['task'])
@@ -32,6 +32,9 @@ class CollectReport(Resource):
             return "error".encode('utf8')
 
         backup_name = jreport['Extra']['backup-name']
+        dup_version = jreport['Data']['Version']
+        backup_task_info.labels(task=backup_name).info({ 'name': backup_name , 'dup_version': dup_version})
+
         self.set_backup_state(jreport, backup_name)
         self.calc_backup_time(jreport, backup_name)
         self.collect_job_sizeof(jreport, backup_name)
