@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  duplicati_exporter:
+    image: mrflobow/duplicati_exporter:0.1
+    container_name: duplicati_exporter
+    networks:
+      - mynetwork
+    ports:
+      - "9123:80"
+    restart: unless-stopped
+networks:
+  mynetwork:
+    external: true

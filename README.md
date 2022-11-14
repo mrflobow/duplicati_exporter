@@ -11,3 +11,10 @@ send-http-url = http://YOUREXPORTER:PORT/report
 
 
 ## More
+
+
+## Docker
+
+### Build Instruction
+
+> docker build . -t mrflobow/duplicati_exporter:0.1 --platform linux/amd64
