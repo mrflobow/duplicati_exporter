@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import json
 import os
 from datetime import datetime
@@ -155,7 +156,7 @@ class CollectReport(Resource):
 
 def main():
     """Main entry point"""
-    exporter_port = os.getenv("EXPORTER_PORT", "80")
+    exporter_port = os.getenv("EXPORTER_PORT", "9123")
     root = Resource()
     root.putChild(b'metrics', MetricsResource())
     root.putChild(b'report', CollectReport())

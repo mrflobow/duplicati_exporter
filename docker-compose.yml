@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  duplicati_exporter:
+  dup_exporter:
     image: mrflobow/duplicati_exporter:0.1
-    container_name: duplicati_exporter
+    container_name: dup_exporter
     networks:
       - mynetwork
     ports:
-      - "9123:80"
+      - "9123:9123"
     restart: unless-stopped
 networks:
   mynetwork:

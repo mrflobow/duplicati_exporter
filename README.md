@@ -10,7 +10,15 @@ send-http-url = http://YOUREXPORTER:PORT/report
 ```
 
 
-## More
+## Prometheus Setup
+
+```
+  - job_name: "duplicati"
+    scrape_interval: 60s
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['dup_exporter:80']
+```
 
 
 ## Docker

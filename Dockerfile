@@ -1,5 +1,5 @@
 FROM python:3.10-alpine
-EXPOSE 80
+EXPOSE 9123
 WORKDIR /usr/src/app
 
 COPY requirements.txt ./
