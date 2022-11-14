@@ -10,7 +10,7 @@ from twisted.internet import reactor
 
 from prometheus_client import Gauge, MetricsHandler, Enum,Info
 
-backup_task_info = Info('backup_task_info', 'Name of the backup task', ['task'])
+backup_task_info = Info('backup_task', 'Name of the backup task', ['task'])
 
 backup_started = Gauge('backup_started', 'Time when the last backup started', ['task'])
 backup_duration = Gauge('backup_duration', 'Time the backup needed to complete', ['task'])
