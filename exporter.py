@@ -45,7 +45,7 @@ class CollectReport(Resource):
         backup_local_size.labels(task=backup_name).set(sof)
         # Remote Backend
         sof = jreport['Data']['BackendStatistics']['KnownFileSize']
-        backup_local_size.labels(task=backup_name).set(sof)
+        backup_remote_size.labels(task=backup_name).set(sof)
 
 
         print(jreport)
